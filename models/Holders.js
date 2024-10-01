@@ -5,7 +5,7 @@ const holderSchema = new mongoose.Schema({
     password: { type: String, minlength: 8, required: true },
     document: { type: String, required: true, unique: true },
     name: { type: String, required: true },
-    rol: { type: String, required: true, default: 'APRENDIZ' }, // 1: aprendiz, 2: admin, 3: usuario sistema
+    rol: { type: String, required: true, default: 'APRENDIZ' }, 
     ficha: { type: String },
     photo: { type: String },
     phone: { type: String, required: true },

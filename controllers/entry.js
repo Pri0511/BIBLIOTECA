@@ -1,7 +1,7 @@
 
 const Entry = require('../models/entry');
 
-// Insertar nueva Entrada
+
 exports.createEntry = async (req, res) => {
     try {
         const entry = new Entry(req.body);
@@ -12,7 +12,6 @@ exports.createEntry = async (req, res) => {
     }
 };
 
-// Listar Entradas por Holder
 exports.getEntriesByHolder = async (req, res) => {
     try {
         const entries = await Entry.find({ holder: req.params.id }).populate('laptops');
@@ -22,7 +21,6 @@ exports.getEntriesByHolder = async (req, res) => {
     }
 };
 
-// Listar Entradas por día
 exports.getEntriesByDay = async (req, res) => {
     try {
         const today = new Date();
@@ -34,10 +32,9 @@ exports.getEntriesByDay = async (req, res) => {
     }
 };
 
-// Listar Entradas entre fechas
 exports.getEntriesByDateRange = async (req, res) => {
     try {
-        const { start, end } = req.query; // asumiendo que las fechas se pasan como parámetros de consulta
+        const { start, end } = req.query; 
         const entries = await Entry.find({
             entrytime: { $gte: new Date(start), $lte: new Date(end) }
         }).populate('laptop');
@@ -47,7 +44,7 @@ exports.getEntriesByDateRange = async (req, res) => {
     }
 };
 
-// Registrar salida o entrega
+
 exports.registerCheckout = async (req, res) => {
     try {
         const entry = await Entry.findByIdAndUpdate(req.body.id, { checkout: new Date() }, { new: true });

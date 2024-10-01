@@ -1,7 +1,7 @@
-// controllers/laptopController.js
+
 const Laptop = require('../models/laptops');
 
-// Insertar nueva Laptop
+
 exports.createLaptop = async (req, res) => {
     try {
         const laptop = new Laptop(req.body);
@@ -12,7 +12,7 @@ exports.createLaptop = async (req, res) => {
     }
 };
 
-// Modificar Laptop por ID
+
 exports.updateLaptop = async (req, res) => {
     try {
         const laptop = await Laptop.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -22,7 +22,7 @@ exports.updateLaptop = async (req, res) => {
     }
 };
 
-// Listar todas las Laptops
+
 exports.getLaptops = async (req, res) => {
     try {
         const laptops = await Laptop.find().populate('holders');
@@ -32,7 +32,7 @@ exports.getLaptops = async (req, res) => {
     }
 };
 
-// Listar Laptop por ID
+
 exports.getLaptopById = async (req, res) => {
     try {
         const laptop = await Laptop.findById(req.params.id).populate('holders');
@@ -42,7 +42,7 @@ exports.getLaptopById = async (req, res) => {
     }
 };
 
-// Activar Laptop
+
 exports.activateLaptop = async (req, res) => {
     try {
         const laptop = await Laptop.findByIdAndUpdate(req.body.id, { state: '1' }, { new: true });
@@ -52,7 +52,7 @@ exports.activateLaptop = async (req, res) => {
     }
 };
 
-// Inactivar Laptop
+
 exports.deactivateLaptop = async (req, res) => {
     try {
         const laptop = await Laptop.findByIdAndUpdate(req.body.id, { state: '0' }, { new: true });

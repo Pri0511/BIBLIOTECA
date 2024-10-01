@@ -1,7 +1,6 @@
-// controllers/holderController.js
+
 const Holder = require('../models/holders');
 
-// Insertar nuevo Holder
 exports.createHolder = async (req, res) => {
     try {
         const holder = new Holder(req.body);
@@ -12,7 +11,6 @@ exports.createHolder = async (req, res) => {
     }
 };
 
-// Modificar Holder por ID
 exports.updateHolder = async (req, res) => {
     try {
         const holder = await Holder.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -22,7 +20,7 @@ exports.updateHolder = async (req, res) => {
     }
 };
 
-// Listar todos los Holders
+
 exports.getHolders = async (req, res) => {
     try {
         const holders = await Holder.find();
@@ -32,7 +30,7 @@ exports.getHolders = async (req, res) => {
     }
 };
 
-// Listar Holder por ID
+
 exports.getHolderById = async (req, res) => {
     try {
         const holder = await Holder.findById(req.params.id);
@@ -42,7 +40,6 @@ exports.getHolderById = async (req, res) => {
     }
 };
 
-// Activar Holder
 exports.activateHolder = async (req, res) => {
     try {
         const holder = await Holder.findByIdAndUpdate(req.body.id, { state: '1' }, { new: true });
@@ -52,7 +49,7 @@ exports.activateHolder = async (req, res) => {
     }
 };
 
-// Inactivar Holder
+
 exports.deactivateHolder = async (req, res) => {
     try {
         const holder = await Holder.findByIdAndUpdate(req.body.id, { state: '0' }, { new: true });
